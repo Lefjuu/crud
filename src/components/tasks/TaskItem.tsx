@@ -15,6 +15,17 @@ export function TaskItem({ task }: TaskItemProps) {
   const updateTask = useUpdateTask();
   const deleteTask = useDeleteTask();
 
+  const handleToggleComplete = async () => {
+    try {
+      await updateTask.mutateAsync({
+        id: task.id,
+        data: { completed: !task.completed },
+      });
+    } catch (error) {
+      console.error('Failed to update task:', error);
+    }
+  };
+
   const handleSaveEdit = async () => {
     if (!editTitle.trim()) return;
 
@@ -46,6 +57,14 @@ export function TaskItem({ task }: TaskItemProps) {
 
   return (
     <div className="flex items-center gap-4 p-4 border border-gray-700 rounded-lg bg-gray-800">
+      <input
+        type="checkbox"
+        checked={task.completed}
+        onChange={handleToggleComplete}
+        disabled={updateTask.isPending}
+        className="w-5 h-5 text-blue-600 bg-gray-600 border-gray-500 rounded focus:ring-blue-400"
+      />
+
       {isEditing ? (
         <div className="flex-1 flex gap-2">
           <input
@@ -72,7 +91,7 @@ export function TaskItem({ task }: TaskItemProps) {
         </div>
       ) : (
         <>
-          <span className="flex-1 text-white">{task.title}</span>
+          <span className={`flex-1 text-white ${task.completed ? 'line-through text-gray-400' : ''}`}>{task.title}</span>
           <button
             onClick={() => setIsEditing(true)}
             disabled={updateTask.isPending || deleteTask.isPending}

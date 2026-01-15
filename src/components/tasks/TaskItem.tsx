@@ -22,7 +22,7 @@ export function TaskItem({ task }: TaskItemProps) {
         data: { completed: !task.completed },
       });
     } catch (error) {
-      console.error('Failed to update task:', error);
+      console.error("Failed to update task:", error);
     }
   };
 
@@ -91,7 +91,13 @@ export function TaskItem({ task }: TaskItemProps) {
         </div>
       ) : (
         <>
-          <span className={`flex-1 text-white ${task.completed ? 'line-through text-gray-400' : ''}`}>{task.title}</span>
+          <span
+            className={`flex-1 text-white ${
+              task.completed ? "line-through text-gray-400" : ""
+            }`}
+          >
+            {task.title}
+          </span>
           <button
             onClick={() => setIsEditing(true)}
             disabled={updateTask.isPending || deleteTask.isPending}

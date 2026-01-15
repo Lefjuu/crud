@@ -129,6 +129,17 @@ crud/
 | PUT    | /api/tasks/[id] | Zaktualizuj zadanie       |
 | DELETE | /api/tasks/[id] | Usuń zadanie              |
 
+---
+
+## API Endpoints
+
+| Metoda | Ścieżka         | Opis                      |
+| ------ | --------------- | ------------------------- |
+| GET    | /api/tasks      | Pobierz wszystkie zadania |
+| POST   | /api/tasks      | Dodaj nowe zadanie        |
+| PUT    | /api/tasks/[id] | Zaktualizuj zadanie       |
+| DELETE | /api/tasks/[id] | Usuń zadanie              |
+
 Przykład dodania zadania:
 
 ```bash
@@ -136,6 +147,21 @@ curl -X POST http://localhost:3000/api/tasks \
   -H "Content-Type: application/json" \
   -d '{"title": "Nauczyć się React"}'
 ```
+
+---
+
+## Dokumentacja API
+
+Pełna interaktywna dokumentacja API jest dostępna pod adresem **http://localhost:3000/api-docs** po uruchomieniu aplikacji.
+
+Dokumentacja zawiera:
+
+- Szczegółowe opisy wszystkich endpointów
+- Przykłady żądań i odpowiedzi
+- Możliwość testowania API bezpośrednio z przeglądarki
+- Schematy danych dla wszystkich modeli
+
+Możesz również przejść do dokumentacji klikając przycisk "API Docs" na stronie głównej aplikacji.
 
 ---
 

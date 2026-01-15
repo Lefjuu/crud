@@ -1,8 +1,8 @@
-version: "3.8"
-
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     ports:
       - "3000:3000"
     environment:
@@ -10,19 +10,4 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
-      - /app/.next
-    depends_on:
-      - db
     command: npm run dev
-
-  db:
-    image: libsql/libsql-server:latest
-    ports:
-      - "8080:8080"
-    volumes:
-      - db_data:/libsql/data
-    environment:
-      - LIBSQL_SERVER_ADDR=0.0.0.0:8080
-
-volumes:
-  db_data:

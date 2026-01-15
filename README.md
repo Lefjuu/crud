@@ -180,9 +180,3 @@ Projekt ma automatyczne testowanie przez GitHub Actions:
 - Budowanie aplikacji
 - Budowanie obrazu Docker
 - Raporty z pokrycia kodu
-
-Zobacz status: https://github.com/Lefjuu/crud/actions
-
----
-
-Zbudowane przez Karola Leguta | Styczeń 2026
